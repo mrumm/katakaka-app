@@ -3,25 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ocean-deep: #0a1628;
+  --ocean-mid: #0f3460;
+  --ocean-light: #16a3c7;
+  --ocean-surface: #53d8fb;
+  --coral: #ff6b6b;
+  --sand: #ffe66d;
+  --seaweed: #2ecc71;
+  --fish-pink: #ff9ff3;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes swim {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(10px) rotate(3deg); }
+  75% { transform: translateX(-10px) rotate(-3deg); }
+}
+
+@keyframes bubble {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-120px) scale(1.5); opacity: 0; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+.animate-swim {
+  animation: swim 3s ease-in-out infinite;
+}
+
+.animate-bubble {
+  animation: bubble 3s ease-in infinite;
+}
+
+.animate-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  background: linear-gradient(180deg, var(--ocean-surface) 0%, var(--ocean-light) 30%, var(--ocean-mid) 70%, var(--ocean-deep) 100%);
+  min-height: 100vh;
+  color: white;
 }
